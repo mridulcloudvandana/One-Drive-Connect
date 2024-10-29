@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive Connect</title>
+</head>
+<body>
+    <p style="font-size: 1rem;">Redirecting...</p>
+    <script>
+        let url = window.location.search;
+        let urlParams = new URLSearchParams(url);
+        let code = urlParams.get('code');
+        let error = urlParams.get('error');
+        let redirectUrl = urlParams.get('state');
+        if(code!==null && code!=='' && code!==undefined){
+           // console.log('location url is '+window.location);
+           // console.log('code is '+code);
+            window.open(redirectUrl.charAt(redirectUrl.length-1)==='/'?redirectUrl.substring(0,redirectUrl.length-1):redirectUrl+'?app='+code,'_top');
+
+        }
+        else if(error!==null && error!=='' && error!==undefined){
+           // console.log('location url is '+window.location);
+           // console.log('code is '+code);
+            window.open(redirectUrl.charAt(redirectUrl.length-1)==='/'?redirectUrl.substring(0,redirectUrl.length-1):redirectUrl+'?app='+error,'_top');
+
+        }
+        
+    </script>
+</body>
+</html>
